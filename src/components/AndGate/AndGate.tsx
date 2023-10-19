@@ -9,12 +9,13 @@ function AndGate({ isConnectable }: { data: any; isConnectable: boolean }) {
         type="target"
         position={Position.Left}
         style={{ top: 15 }}
+        id="a"
         isConnectable={isConnectable}
       />
       <Handle
         type="target"
         position={Position.Left}
-        id="a"
+        id="b"
         style={{ top: 35 }}
         isConnectable={isConnectable}
       />
@@ -23,7 +24,7 @@ function AndGate({ isConnectable }: { data: any; isConnectable: boolean }) {
         type="source"
         position={Position.Right}
         style={{ top: 25 }}
-        id="b"
+        id="c"
         isConnectable={isConnectable}
       />
     </div>
