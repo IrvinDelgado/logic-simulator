@@ -7,7 +7,7 @@ import ReactFlow, {
 } from "reactflow";
 import useStore, { RFState } from "./store/RFStore";
 
-import AndGate from "./components/AndGate/AndGate";
+import AndGate from "./components/AndGate";
 
 import "reactflow/dist/style.css";
 import { useShallow } from "zustand/react/shallow";

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Handle, Position } from "reactflow";
-import AndGateSVG from "../../assets/Gates/and.svg";
+import AndGateSVG from "../assets/Gates/and.svg";
 
 function AndGate({ isConnectable }: { data: any; isConnectable: boolean }) {
   return (
