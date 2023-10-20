@@ -31,7 +31,7 @@ const initialNodes: Node[] = [
     id: "node-1",
     type: "AndGate",
     position: { x: 250, y: 75 },
-    data: { a: false, b: false, c: false },
+    data: { a: false, b: false, out: false },
   },
   {
     id: "3",
@@ -75,9 +75,9 @@ const useStore = create<RFState>()(
             const andGateData = { ...get().nodes[findAndGateIdx].data };
             andGateData[connection.targetHandle] = true;
             andGateData.a && andGateData.b
-              ? (andGateData.c = true)
-              : (andGateData.c = false);
-            if (andGateData.c) {
+              ? (andGateData.out = true)
+              : (andGateData.out = false);
+            if (andGateData.out) {
               const andOutEdgeIdx = get().edges.findIndex(
                 (edg) => edg.source === nodeTarget.id
               );

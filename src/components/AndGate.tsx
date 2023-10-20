@@ -36,7 +36,7 @@ function AndGate({ isConnectable }: { data: any; isConnectable: boolean }) {
         type="source"
         position={Position.Right}
         style={{ top: 25 }}
-        id="c"
+        id="out"
         isConnectable={isConnectable}
       />
     </div>
