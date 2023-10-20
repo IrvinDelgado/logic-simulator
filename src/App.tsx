@@ -21,11 +21,17 @@ const selector = (state: RFState) => ({
   onNodesChange: state.onNodesChange,
   onEdgesChange: state.onEdgesChange,
   onConnect: state.onConnect,
+  onEdgesDeleted: state.onEdgesDeleted,
 });
 export default function App() {
-  const { nodes, edges, onNodesChange, onEdgesChange, onConnect } = useStore(
-    useShallow(selector)
-  );
+  const {
+    nodes,
+    edges,
+    onNodesChange,
+    onEdgesChange,
+    onConnect,
+    onEdgesDeleted,
+  } = useStore(useShallow(selector));
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
@@ -35,6 +41,7 @@ export default function App() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        onEdgesDelete={onEdgesDeleted}
         nodeTypes={nodeTypes}
         fitView={true}
       >

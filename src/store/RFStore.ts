@@ -46,7 +46,9 @@ export type RFState = {
   edges: Edge[];
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
+  onEdgesDeleted: (edgesDeleted: Edge[]) => void;
   onConnect: (connection: Connection) => void;
+  toggleOut: (id: string, status: boolean) => void;
 };
 const useStore = create<RFState>()(
   immer(
@@ -77,23 +79,6 @@ const useStore = create<RFState>()(
             );
             const andGateData = { ...get().nodes[findAndGateIdx].data };
             andGateData[connection.targetHandle] = true;
-            andGateData.a && andGateData.b
-              ? (andGateData.out = true)
-              : (andGateData.out = false);
-            if (andGateData.out) {
-              const andOutEdgeIdx = get().edges.findIndex(
-                (edg) => edg.source === nodeTarget.id
-              );
-              const outEdge = get().edges[andOutEdgeIdx];
-              if (outEdge) {
-                const outNodeIdx = get().nodes.findIndex(
-                  (nd) => nd.id === outEdge.target
-                );
-                if (outNodeIdx > -1) {
-                  state.nodes[outNodeIdx].data = { in: true };
-                }
-              }
-            }
             state.nodes[findAndGateIdx].data = andGateData;
           }
           if (nodeTarget?.type === "LightBulb" && nodeSource?.data.out) {
@@ -105,6 +90,39 @@ const useStore = create<RFState>()(
             }
           }
           state.edges = addEdge(connection, get().edges);
+        });
+      },
+      onEdgesDeleted: (edgesDeleted) => {
+        set((state) => {
+          for (const idx in edgesDeleted) {
+            const edge = edgesDeleted[idx];
+            const nodeTargetIdx = get().nodes.findIndex(
+              (nds) => nds.id === edge.target
+            );
+            const nodeTarget = get().nodes[nodeTargetIdx];
+            if (nodeTarget.type === "LightBulb") {
+              state.nodes[nodeTargetIdx].data.in = false;
+            }
+            if (nodeTarget.type === "AndGate" && edge.targetHandle) {
+              const andGateData = { ...get().nodes[nodeTargetIdx].data };
+              andGateData[edge.targetHandle] = false;
+              state.nodes[nodeTargetIdx].data = andGateData;
+            }
+          }
+        });
+      },
+      toggleOut: (id, status) => {
+        set((state) => {
+          const nodeTarget: Node | undefined = get().nodes.find(
+            (nd) => nd.id === id
+          );
+          const nodeTargetIdx = get().nodes.findIndex((nd) => nd.id === id);
+          if (nodeTarget) {
+            state.nodes[nodeTargetIdx].data = {
+              ...nodeTarget.data,
+              out: status,
+            };
+          }
         });
       },
     }))
