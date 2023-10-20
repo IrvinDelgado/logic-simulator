@@ -38,10 +38,8 @@ const initialNodes: Node[] = [
   },
   {
     id: "3",
-    targetPosition: Position.Left,
-    type: "output",
-    data: { label: "Output Node" },
-    style: { backgroundColor: "grey" },
+    type: "LightBulb",
+    data: { in: false },
     position: { x: 450, y: 75 },
   },
 ];
@@ -92,7 +90,7 @@ const useStore = create<RFState>()(
                   (nd) => nd.id === outEdge.target
                 );
                 if (outNodeIdx > -1) {
-                  state.nodes[outNodeIdx].style = { backgroundColor: "green" };
+                  state.nodes[outNodeIdx].data = { in: true };
                 }
               }
             }

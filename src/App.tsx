@@ -8,11 +8,12 @@ import ReactFlow, {
 import useStore, { RFState } from "./store/RFStore";
 
 import AndGate from "./components/AndGate";
+import LightBulb from "./components/LightBulb";
 
 import "reactflow/dist/style.css";
 import { useShallow } from "zustand/react/shallow";
 
-const nodeTypes = { AndGate: AndGate };
+const nodeTypes = { AndGate, LightBulb };
 const selector = (state: RFState) => ({
   nodes: state.nodes,
   edges: state.edges,
