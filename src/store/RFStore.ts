@@ -8,7 +8,6 @@ import {
   addEdge,
   OnNodesChange,
   OnEdgesChange,
-  Position,
   applyNodeChanges,
   applyEdgeChanges,
 } from "reactflow";
@@ -18,16 +17,14 @@ import { immer } from "zustand/middleware/immer";
 const initialNodes: Node[] = [
   {
     id: "1",
-    sourcePosition: Position.Right,
-    type: "input",
-    data: { label: "Input Node" },
+    type: "On",
+    data: { out: true },
     position: { x: 0, y: 0 },
   },
   {
     id: "2",
-    sourcePosition: Position.Right,
-    type: "input",
-    data: { label: "Input Node" },
+    type: "On",
+    data: { out: true },
     position: { x: 0, y: 150 },
   },
   {
