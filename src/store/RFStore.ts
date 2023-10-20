@@ -34,7 +34,7 @@ const initialNodes: Node[] = [
     id: "node-1",
     type: "AndGate",
     position: { x: 250, y: 75 },
-    data: { a: false, b: false },
+    data: { a: false, b: false, c: false },
   },
   {
     id: "3",
@@ -70,21 +70,33 @@ const useStore = create<RFState>()(
       },
       onConnect: (connection: Connection) => {
         set((state: RFState) => {
-          const nodeSource = get().nodes.find(
-            (nd) => nd.id === connection.source
-          );
           const nodeTarget = get().nodes.find(
             (nd) => nd.id === connection.target
           );
-          if (
-            connection.targetHandle &&
-            nodeSource?.type === "input" &&
-            nodeTarget?.type === "AndGate"
-          ) {
+          if (connection.targetHandle && nodeTarget?.type === "AndGate") {
             const findAndGateIdx = get().nodes.findIndex(
               (nd) => nd.id === nodeTarget.id
             );
-            state.nodes[findAndGateIdx].data[connection.targetHandle] = true;
+            const andGateData = { ...get().nodes[findAndGateIdx].data };
+            andGateData[connection.targetHandle] = true;
+            andGateData.a && andGateData.b
+              ? (andGateData.c = true)
+              : (andGateData.c = false);
+            if (andGateData.c) {
+              const andOutEdgeIdx = get().edges.findIndex(
+                (edg) => edg.source === nodeTarget.id
+              );
+              const outEdge = get().edges[andOutEdgeIdx];
+              if (outEdge) {
+                const outNodeIdx = get().nodes.findIndex(
+                  (nd) => nd.id === outEdge.target
+                );
+                if (outNodeIdx > -1) {
+                  state.nodes[outNodeIdx].style = { backgroundColor: "green" };
+                }
+              }
+            }
+            state.nodes[findAndGateIdx].data = andGateData;
           }
           state.edges = addEdge(connection, get().edges);
         });
