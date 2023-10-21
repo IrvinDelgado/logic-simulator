@@ -99,14 +99,8 @@ const useStore = create<RFState>()(
             const nodeTargetIdx = get().nodes.findIndex(
               (nds) => nds.id === edge.target
             );
-            const nodeTarget = get().nodes[nodeTargetIdx];
-            if (nodeTarget.type === "LightBulb") {
-              state.nodes[nodeTargetIdx].data.in = false;
-            }
-            if (nodeTarget.type === "AndGate" && edge.targetHandle) {
-              const andGateData = { ...get().nodes[nodeTargetIdx].data };
-              andGateData[edge.targetHandle] = false;
-              state.nodes[nodeTargetIdx].data = andGateData;
+            if (edge.targetHandle) {
+              state.nodes[nodeTargetIdx].data[edge.targetHandle] = false;
             }
           }
         });
