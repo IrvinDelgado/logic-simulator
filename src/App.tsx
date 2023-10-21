@@ -11,11 +11,12 @@ import AndGate from "./components/AndGate";
 import LightBulb from "./components/LightBulb";
 import On from "./components/On";
 import Switch from "./components/Switch";
+import Not from "./components/Not";
 
 import "reactflow/dist/style.css";
 import { useShallow } from "zustand/react/shallow";
 
-const nodeTypes = { AndGate, LightBulb, On, Switch };
+const nodeTypes = { AndGate, LightBulb, On, Switch, Not };
 const selector = (state: RFState) => ({
   nodes: state.nodes,
   edges: state.edges,

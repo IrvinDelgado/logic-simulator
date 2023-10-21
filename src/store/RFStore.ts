@@ -29,9 +29,9 @@ const initialNodes: Node[] = [
   },
   {
     id: "3",
-    type: "AndGate",
+    type: "Not",
     position: { x: 250, y: 75 },
-    data: { a: false, b: false, out: false },
+    data: { in: false, out: false },
   },
   {
     id: "4",
