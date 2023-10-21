@@ -17,24 +17,24 @@ import { immer } from "zustand/middleware/immer";
 const initialNodes: Node[] = [
   {
     id: "1",
-    type: "On",
-    data: { out: true },
+    type: "Switch",
+    data: { out: false },
     position: { x: 0, y: 0 },
   },
   {
     id: "2",
-    type: "On",
-    data: { out: true },
+    type: "Switch",
+    data: { out: false },
     position: { x: 0, y: 150 },
   },
   {
-    id: "node-1",
+    id: "3",
     type: "AndGate",
     position: { x: 250, y: 75 },
     data: { a: false, b: false, out: false },
   },
   {
-    id: "3",
+    id: "4",
     type: "LightBulb",
     data: { in: false },
     position: { x: 450, y: 75 },
