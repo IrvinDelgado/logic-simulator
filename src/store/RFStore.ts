@@ -123,6 +123,14 @@ const useStore = create<RFState>()(
               out: status,
             };
           }
+          const edgeConnection = get().edges.find((edg) => edg.source === id);
+          const connectedNodeIdx = get().nodes.findIndex(
+            (nd) => nd.id === edgeConnection?.target
+          );
+          if (connectedNodeIdx && edgeConnection?.targetHandle) {
+            state.nodes[connectedNodeIdx].data[edgeConnection.targetHandle] =
+              status;
+          }
         });
       },
     }))
