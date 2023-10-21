@@ -67,28 +67,22 @@ const useStore = create<RFState>()(
       },
       onConnect: (connection: Connection) => {
         set((state: RFState) => {
-          const nodeTarget = get().nodes.find(
+          const nodeTargetIdx = get().nodes.findIndex(
             (nd) => nd.id === connection.target
           );
           const nodeSource = get().nodes.find(
             (nd) => nd.id === connection.source
           );
-          if (connection.targetHandle && nodeTarget?.type === "AndGate") {
-            const findAndGateIdx = get().nodes.findIndex(
-              (nd) => nd.id === nodeTarget.id
-            );
-            const andGateData = { ...get().nodes[findAndGateIdx].data };
-            andGateData[connection.targetHandle] = true;
-            state.nodes[findAndGateIdx].data = andGateData;
+          if (
+            nodeTargetIdx > -1 &&
+            connection.targetHandle &&
+            nodeSource &&
+            connection.sourceHandle
+          ) {
+            state.nodes[nodeTargetIdx].data[connection.targetHandle] =
+              nodeSource.data[connection.sourceHandle];
           }
-          if (nodeTarget?.type === "LightBulb" && nodeSource?.data.out) {
-            const lightBulbIdx = get().nodes.findIndex(
-              (nd) => nd.id === nodeTarget.id
-            );
-            if (lightBulbIdx > -1) {
-              state.nodes[lightBulbIdx].data = { in: true };
-            }
-          }
+
           state.edges = addEdge(connection, get().edges);
         });
       },
