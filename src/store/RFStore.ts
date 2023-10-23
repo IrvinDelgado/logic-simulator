@@ -16,25 +16,25 @@ import { immer } from "zustand/middleware/immer";
 
 const initialNodes: Node[] = [
   {
-    id: "1",
+    id: "init_1",
     type: "Switch",
     data: { out: false },
     position: { x: 0, y: 0 },
   },
   {
-    id: "2",
+    id: "init_2",
     type: "Switch",
     data: { out: false },
     position: { x: 0, y: 150 },
   },
   {
-    id: "3",
-    type: "Not",
+    id: "init_3",
+    type: "AndGate",
     position: { x: 250, y: 75 },
-    data: { in: false, out: false },
+    data: { a: false, b: false, out: false },
   },
   {
-    id: "4",
+    id: "init_4",
     type: "LightBulb",
     data: { in: false },
     position: { x: 450, y: 75 },
@@ -49,6 +49,7 @@ export type RFState = {
   onEdgesDeleted: (edgesDeleted: Edge[]) => void;
   onConnect: (connection: Connection) => void;
   toggleOut: (id: string, status: boolean) => void;
+  addNode: (node: Node) => void;
 };
 const useStore = create<RFState>()(
   immer(
@@ -119,6 +120,11 @@ const useStore = create<RFState>()(
             state.nodes[connectedNodeIdx].data[edgeConnection.targetHandle] =
               status;
           }
+        });
+      },
+      addNode: (node) => {
+        set((state) => {
+          state.nodes.push(node);
         });
       },
     }))

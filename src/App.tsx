@@ -4,6 +4,7 @@ import ReactFlow, {
   Controls,
   Background,
   BackgroundVariant,
+  ReactFlowInstance,
 } from "reactflow";
 import useStore, { RFState } from "./store/RFStore";
 
@@ -15,6 +16,8 @@ import Not from "./components/Not";
 
 import "reactflow/dist/style.css";
 import { useShallow } from "zustand/react/shallow";
+import SideBar from "./components/Sidebar";
+import { useCallback, useRef, useState } from "react";
 
 const nodeTypes = { AndGate, LightBulb, On, Switch, Not };
 const selector = (state: RFState) => ({
@@ -24,7 +27,26 @@ const selector = (state: RFState) => ({
   onEdgesChange: state.onEdgesChange,
   onConnect: state.onConnect,
   onEdgesDeleted: state.onEdgesDeleted,
+  addNode: state.addNode,
 });
+const initNodeData = (type: string) => {
+  switch (type) {
+    case "AndGate":
+      return { a: false, b: false, out: false };
+    case "On":
+      return { out: true };
+    case "LightBulb":
+      return { in: false };
+    case "Not":
+      return { in: false, out: true };
+    case "Switch":
+      return { out: false };
+  }
+};
+
+let id = 0;
+const getId = () => `node_${id++}`;
+
 export default function App() {
   const {
     nodes,
@@ -33,24 +55,66 @@ export default function App() {
     onEdgesChange,
     onConnect,
     onEdgesDeleted,
+    addNode,
   } = useStore(useShallow(selector));
+  const reactFlowWrapperRef = useRef<HTMLDivElement>(null);
+  const [reactFlowInstance, setReactFlowInstance] =
+    useState<ReactFlowInstance | null>(null);
+
+  const onDragOver = useCallback((event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+  }, []);
+
+  const onDrop = useCallback(
+    (event: React.DragEvent<HTMLDivElement>) => {
+      event.preventDefault();
+      const nodeType = event.dataTransfer.getData("application/reactflow");
+      const reactFlowBounds =
+        reactFlowWrapperRef.current?.getBoundingClientRect();
+
+      if (!nodeType || !reactFlowBounds || !reactFlowInstance) {
+        return;
+      }
+      const position = reactFlowInstance.project({
+        x: event.clientX - reactFlowBounds.left,
+        y: event.clientY - reactFlowBounds.top,
+      });
+
+      const newNode = {
+        id: getId(),
+        type: nodeType,
+        position,
+        data: initNodeData(nodeType),
+      };
+      console.log(newNode);
+      addNode(newNode);
+    },
+    [reactFlowInstance, addNode]
+  );
 
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-        onEdgesDelete={onEdgesDeleted}
-        nodeTypes={nodeTypes}
-        fitView={true}
-      >
-        <Controls />
-        <MiniMap />
-        <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
-      </ReactFlow>
+    <div className="logicFlow">
+      <SideBar />
+      <div className="reactFlowWrapper" ref={reactFlowWrapperRef}>
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          onInit={setReactFlowInstance}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          onConnect={onConnect}
+          onEdgesDelete={onEdgesDeleted}
+          onDragOver={onDragOver}
+          onDrop={onDrop}
+          nodeTypes={nodeTypes}
+          fitView={true}
+        >
+          <Controls />
+          <MiniMap />
+          <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
+        </ReactFlow>
+      </div>
     </div>
   );
 }
