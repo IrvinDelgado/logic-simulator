@@ -5,6 +5,7 @@ import {
   OnIcon,
   SevenSegmentDisplayIcon,
 } from "../../assets/Icons";
+import { NodeType } from "../../utils/types";
 import styles from "./Sidebar.module.css";
 
 const SideBar = () => {
@@ -17,23 +18,34 @@ const SideBar = () => {
   };
   return (
     <aside className={styles.sideBar}>
-      <div onDragStart={(event) => onDragStart(event, "AndGate")} draggable>
+      <div
+        onDragStart={(event) => onDragStart(event, NodeType.AND_GATE)}
+        draggable
+      >
         <AndGateIcon />
       </div>
-      <div onDragStart={(event) => onDragStart(event, "LightBulb")} draggable>
+      <div
+        onDragStart={(event) => onDragStart(event, NodeType.LIGHTBULB)}
+        draggable
+      >
         <LightBulbIcon />
       </div>
-      <div onDragStart={(event) => onDragStart(event, "Not")} draggable>
+      <div onDragStart={(event) => onDragStart(event, NodeType.NOT)} draggable>
         <NotIcon />
       </div>
-      <div onDragStart={(event) => onDragStart(event, "Switch")} draggable>
+      <div
+        onDragStart={(event) => onDragStart(event, NodeType.SWITCH)}
+        draggable
+      >
         <button className={`button`}></button>
       </div>
-      <div onDragStart={(event) => onDragStart(event, "On")} draggable>
+      <div onDragStart={(event) => onDragStart(event, NodeType.ON)} draggable>
         <OnIcon />
       </div>
       <div
-        onDragStart={(event) => onDragStart(event, "SevenSegmentDisplay")}
+        onDragStart={(event) =>
+          onDragStart(event, NodeType.SEVEN_SEGMENT_DISPLAY)
+        }
         draggable
       >
         <SevenSegmentDisplayIcon />

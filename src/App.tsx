@@ -19,6 +19,7 @@ import "reactflow/dist/style.css";
 import { useShallow } from "zustand/react/shallow";
 import SideBar from "./components/Sidebar/Sidebar";
 import { useCallback, useRef, useState } from "react";
+import { NodeType, initNodeData } from "./utils/types";
 
 const nodeTypes = { AndGate, LightBulb, On, Switch, Not, SevenSegmentDisplay };
 const selector = (state: RFState) => ({
@@ -30,22 +31,6 @@ const selector = (state: RFState) => ({
   onEdgesDeleted: state.onEdgesDeleted,
   addNode: state.addNode,
 });
-const initNodeData = (type: string) => {
-  switch (type) {
-    case "AndGate":
-      return { a: false, b: false, out: false };
-    case "On":
-      return { out: true };
-    case "LightBulb":
-      return { in: false };
-    case "Not":
-      return { in: false, out: true };
-    case "Switch":
-      return { out: false };
-    case "SevenSegmentDisplay":
-      return { a: false, b: false, c: false, d: false };
-  }
-};
 
 let id = 0;
 const getId = () => `node_${id++}`;
@@ -72,7 +57,9 @@ export default function App() {
   const onDrop = useCallback(
     (event: React.DragEvent<HTMLDivElement>) => {
       event.preventDefault();
-      const nodeType = event.dataTransfer.getData("application/reactflow");
+      const nodeType = event.dataTransfer.getData(
+        "application/reactflow"
+      ) as NodeType;
       const reactFlowBounds =
         reactFlowWrapperRef.current?.getBoundingClientRect();
 
