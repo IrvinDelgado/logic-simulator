@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Handle, Position } from "reactflow";
-import { LightBulbOffIcon, LightBulbOnIcon } from "../assets/Icons";
+import { LightBulbOffIcon, LightBulbOnIcon } from "../../assets/Icons";
 
 function LightBulb({
   data,

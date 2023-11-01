@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Handle, Position } from "reactflow";
-import { OnIcon } from "../assets/Icons";
+import { OnIcon } from "../../assets/Icons";
 
 function On({ isConnectable }: { isConnectable: boolean }) {
   return (

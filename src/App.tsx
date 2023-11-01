@@ -8,16 +8,16 @@ import ReactFlow, {
 } from "reactflow";
 import useStore, { RFState } from "./store/RFStore";
 
-import AndGate from "./components/AndGate";
-import LightBulb from "./components/LightBulb";
-import On from "./components/On";
-import Switch from "./components/Switch";
-import Not from "./components/Not";
+import AndGate from "./components/AndGate/AndGate";
+import LightBulb from "./components/LightBulb/LightBulb";
+import On from "./components/On/On";
+import Switch from "./components/Switch/Switch";
+import Not from "./components/Not/Not";
 import SevenSegmentDisplay from "./components/SevenSegmentDisplay/SevenSegmentDisplay";
 
 import "reactflow/dist/style.css";
 import { useShallow } from "zustand/react/shallow";
-import SideBar from "./components/Sidebar";
+import SideBar from "./components/Sidebar/Sidebar";
 import { useCallback, useRef, useState } from "react";
 
 const nodeTypes = { AndGate, LightBulb, On, Switch, Not, SevenSegmentDisplay };

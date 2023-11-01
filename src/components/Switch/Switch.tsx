@@ -1,15 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Handle, Position } from "reactflow";
-import useStore, { RFState } from "../store/RFStore";
+import useStore, { RFState } from "../../store/RFStore";
 import { useShallow } from "zustand/react/shallow";
-import { useEffect } from "react";
-import { NotIcon } from "../assets/Icons";
+import styles from "./Switch.module.css";
 
 const selector = (state: RFState) => ({
   toggleOut: state.toggleOut,
 });
 
-function Not({
+function Switch({
   id,
   isConnectable,
   data,
@@ -19,20 +18,15 @@ function Not({
   data: any;
 }) {
   const { toggleOut } = useStore(useShallow(selector));
-  useEffect(() => {
-    if (data.in === data.out) {
-      toggleOut(id, !data.in);
-    }
-  });
+  const handleOnClick = () => {
+    toggleOut(id, !data.out);
+  };
   return (
     <div>
-      <Handle
-        type="target"
-        position={Position.Left}
-        id="in"
-        isConnectable={isConnectable}
-      />
-      <NotIcon />
+      <button
+        onClick={() => handleOnClick()}
+        className={`button ${data.out ? styles.onSwitch : styles.offSwitch}`}
+      ></button>
       <Handle
         type="source"
         position={Position.Right}
@@ -43,4 +37,4 @@ function Not({
   );
 }
 
-export default Not;
+export default Switch;

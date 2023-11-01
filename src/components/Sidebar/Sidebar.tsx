@@ -4,7 +4,8 @@ import {
   NotIcon,
   OnIcon,
   SevenSegmentDisplayIcon,
-} from "../assets/Icons";
+} from "../../assets/Icons";
+import styles from "./Sidebar.module.css";
 
 const SideBar = () => {
   const onDragStart = (
@@ -15,7 +16,7 @@ const SideBar = () => {
     event.dataTransfer.effectAllowed = "move";
   };
   return (
-    <aside>
+    <aside className={styles.sideBar}>
       <div onDragStart={(event) => onDragStart(event, "AndGate")} draggable>
         <AndGateIcon />
       </div>

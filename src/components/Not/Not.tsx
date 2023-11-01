@@ -1,31 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Handle, Position } from "reactflow";
-import useStore, { RFState } from "../store/RFStore";
+import useStore, { RFState } from "../../store/RFStore";
 import { useShallow } from "zustand/react/shallow";
 import { useEffect } from "react";
-import { AndGateIcon } from "../assets/Icons";
+import { NotIcon } from "../../assets/Icons";
 
 const selector = (state: RFState) => ({
   toggleOut: state.toggleOut,
 });
 
-function AndGate({
+function Not({
   id,
-  data,
   isConnectable,
+  data,
 }: {
   id: string;
-  data: { a: boolean; b: boolean; out: boolean };
   isConnectable: boolean;
+  data: any;
 }) {
   const { toggleOut } = useStore(useShallow(selector));
-
   useEffect(() => {
-    if (data.a && data.b && !data.out) {
-      toggleOut(id, true);
-    }
-    if ((!data.a || !data.b) && data.out) {
-      toggleOut(id, false);
+    if (data.in === data.out) {
+      toggleOut(id, !data.in);
     }
   });
   return (
@@ -33,22 +29,13 @@ function AndGate({
       <Handle
         type="target"
         position={Position.Left}
-        style={{ top: 15 }}
-        id="a"
+        id="in"
         isConnectable={isConnectable}
       />
-      <Handle
-        type="target"
-        position={Position.Left}
-        id="b"
-        style={{ top: 35 }}
-        isConnectable={isConnectable}
-      />
-      <AndGateIcon />
+      <NotIcon />
       <Handle
         type="source"
         position={Position.Right}
-        style={{ top: 25 }}
         id="out"
         isConnectable={isConnectable}
       />
@@ -56,4 +43,4 @@ function AndGate({
   );
 }
 
-export default AndGate;
+export default Not;
