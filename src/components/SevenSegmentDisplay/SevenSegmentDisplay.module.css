@@ -1,0 +1,6 @@
+.container {
+  background-color: black;
+  padding-inline-start: 0.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid lightgray;
+}

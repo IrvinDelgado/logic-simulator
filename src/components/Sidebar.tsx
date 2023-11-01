@@ -1,4 +1,10 @@
-import { AndGateIcon, LightBulbIcon, NotIcon, OnIcon } from "../assets/Icons";
+import {
+  AndGateIcon,
+  LightBulbIcon,
+  NotIcon,
+  OnIcon,
+  SevenSegmentDisplayIcon,
+} from "../assets/Icons";
 
 const SideBar = () => {
   const onDragStart = (
@@ -24,6 +30,12 @@ const SideBar = () => {
       </div>
       <div onDragStart={(event) => onDragStart(event, "On")} draggable>
         <OnIcon />
+      </div>
+      <div
+        onDragStart={(event) => onDragStart(event, "SevenSegmentDisplay")}
+        draggable
+      >
+        <SevenSegmentDisplayIcon />
       </div>
     </aside>
   );

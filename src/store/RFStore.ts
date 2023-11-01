@@ -14,32 +14,7 @@ import {
 import { devtools } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
-const initialNodes: Node[] = [
-  {
-    id: "init_1",
-    type: "Switch",
-    data: { out: false },
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: "init_2",
-    type: "Switch",
-    data: { out: false },
-    position: { x: 0, y: 150 },
-  },
-  {
-    id: "init_3",
-    type: "AndGate",
-    position: { x: 250, y: 75 },
-    data: { a: false, b: false, out: false },
-  },
-  {
-    id: "init_4",
-    type: "LightBulb",
-    data: { in: false },
-    position: { x: 450, y: 75 },
-  },
-];
+const initialNodes: Node[] = [];
 
 export type RFState = {
   nodes: Node[];
@@ -116,7 +91,7 @@ const useStore = create<RFState>()(
           const connectedNodeIdx = get().nodes.findIndex(
             (nd) => nd.id === edgeConnection?.target
           );
-          if (connectedNodeIdx && edgeConnection?.targetHandle) {
+          if (connectedNodeIdx >= 0 && edgeConnection?.targetHandle) {
             state.nodes[connectedNodeIdx].data[edgeConnection.targetHandle] =
               status;
           }

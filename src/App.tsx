@@ -13,13 +13,14 @@ import LightBulb from "./components/LightBulb";
 import On from "./components/On";
 import Switch from "./components/Switch";
 import Not from "./components/Not";
+import SevenSegmentDisplay from "./components/SevenSegmentDisplay/SevenSegmentDisplay";
 
 import "reactflow/dist/style.css";
 import { useShallow } from "zustand/react/shallow";
 import SideBar from "./components/Sidebar";
 import { useCallback, useRef, useState } from "react";
 
-const nodeTypes = { AndGate, LightBulb, On, Switch, Not };
+const nodeTypes = { AndGate, LightBulb, On, Switch, Not, SevenSegmentDisplay };
 const selector = (state: RFState) => ({
   nodes: state.nodes,
   edges: state.edges,
@@ -41,6 +42,8 @@ const initNodeData = (type: string) => {
       return { in: false, out: true };
     case "Switch":
       return { out: false };
+    case "SevenSegmentDisplay":
+      return { a: false, b: false, c: false, d: false };
   }
 };
 

@@ -97,3 +97,19 @@ export const OnIcon = () => {
     </svg>
   );
 };
+
+export const SevenSegmentDisplayIcon = () => {
+  return (
+    <div>
+      <svg width="50" height="110" stroke="white">
+        <polygon points="10, 10 35, 10 40, 15 35, 20 10, 20 5, 15" />
+        <polygon points="40, 20 45, 25 45, 50 40, 55 35, 50 35, 25" />
+        <polygon points="10, 55 35, 55 40, 60 35, 65 10, 65 5, 60" />
+        <polygon points="5, 20 10, 25 10, 50 5, 55 0, 50 0, 25" />
+        <polygon points="5, 65 10, 70 10, 90 5, 95 0, 90 0, 70" />
+        <polygon points="10, 95 35, 95 40, 100 35, 105 10, 105 5, 100" />
+        <polygon points="40, 65 45, 70 45, 90 40, 95 35, 90 35, 70" />
+      </svg>
+    </div>
+  );
+};
