@@ -77,7 +77,6 @@ export default function App() {
         position,
         data: initNodeData(nodeType),
       };
-      console.log(newNode);
       addNode(newNode);
     },
     [reactFlowInstance, addNode]
