@@ -49,17 +49,23 @@ const useStore = create<RFState>()(
           const nodeSource = get().nodes.find(
             (nd) => nd.id === connection.source
           );
+          let nodeSourceHandleState = false;
           if (
             nodeTargetIdx > -1 &&
             connection.targetHandle &&
             nodeSource &&
             connection.sourceHandle
           ) {
+            nodeSourceHandleState = nodeSource.data[connection.sourceHandle];
             state.nodes[nodeTargetIdx].data[connection.targetHandle] =
-              nodeSource.data[connection.sourceHandle];
+              nodeSourceHandleState;
           }
-
-          state.edges = addEdge(connection, get().edges);
+          const animatedConnection = {
+            ...connection,
+            animated: nodeSourceHandleState,
+            style: { stroke: nodeSourceHandleState ? "yellow" : "gray" },
+          };
+          state.edges = addEdge(animatedConnection, get().edges);
         });
       },
       onEdgesDeleted: (edgesDeleted) => {
@@ -77,23 +83,32 @@ const useStore = create<RFState>()(
       },
       toggleOut: (id, status) => {
         set((state) => {
-          const nodeTarget: Node | undefined = get().nodes.find(
-            (nd) => nd.id === id
-          );
           const nodeTargetIdx = get().nodes.findIndex((nd) => nd.id === id);
-          if (nodeTarget) {
+          if (nodeTargetIdx > -1) {
+            const nodeTarget = get().nodes[nodeTargetIdx];
             state.nodes[nodeTargetIdx].data = {
               ...nodeTarget.data,
               out: status,
             };
           }
-          const edgeConnection = get().edges.find((edg) => edg.source === id);
-          const connectedNodeIdx = get().nodes.findIndex(
-            (nd) => nd.id === edgeConnection?.target
+          const edgeConnectionIdx = get().edges.findIndex(
+            (edg) => edg.source === id
           );
-          if (connectedNodeIdx >= 0 && edgeConnection?.targetHandle) {
-            state.nodes[connectedNodeIdx].data[edgeConnection.targetHandle] =
-              status;
+          if (edgeConnectionIdx > -1) {
+            const edgeConnection = get().edges[edgeConnectionIdx];
+            const updatedConnection = {
+              ...get().edges[edgeConnectionIdx],
+              animated: status,
+              style: { stroke: status ? "yellow" : "gray" },
+            };
+            state.edges[edgeConnectionIdx] = updatedConnection;
+            const connectedNodeIdx = get().nodes.findIndex(
+              (nd) => nd.id === edgeConnection?.target
+            );
+            if (connectedNodeIdx >= 0 && edgeConnection?.targetHandle) {
+              state.nodes[connectedNodeIdx].data[edgeConnection.targetHandle] =
+                status;
+            }
           }
         });
       },
