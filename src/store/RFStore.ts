@@ -83,6 +83,7 @@ const useStore = create<RFState>()(
       },
       toggleOut: (id, status) => {
         set((state) => {
+          // Update Current Node Out to new Status
           const nodeTargetIdx = get().nodes.findIndex((nd) => nd.id === id);
           if (nodeTargetIdx > -1) {
             const nodeTarget = get().nodes[nodeTargetIdx];
@@ -91,25 +92,35 @@ const useStore = create<RFState>()(
               out: status,
             };
           }
-          const edgeConnectionIdx = get().edges.findIndex(
-            (edg) => edg.source === id
+          // Update All Nodes based on Edges Source Node Output
+          // 1. Get All Edges this Node is Connected to
+          // 2. Update All the Nodes and Edges this Node is Connected to
+          const connectedEdgesIdx: number[] = get().edges.reduce(
+            (acc: number[], edg, idx) => {
+              if (edg.source === id) {
+                acc.push(idx);
+              }
+              return acc;
+            },
+            []
           );
-          if (edgeConnectionIdx > -1) {
-            const edgeConnection = get().edges[edgeConnectionIdx];
+          if (connectedEdgesIdx.length < 0) return;
+          connectedEdgesIdx.forEach((edgeIdx) => {
+            const connectedEdge = get().edges[edgeIdx];
+            if (!connectedEdge.targetHandle) return;
+            // For an edge to exist a Source and Target Node MUST exist
+            const connectedNodeIdx = get().nodes.findIndex(
+              (nd) => nd.id === connectedEdge.target
+            );
             const updatedConnection = {
-              ...get().edges[edgeConnectionIdx],
+              ...connectedEdge,
               animated: status,
               style: { stroke: status ? "yellow" : "gray" },
             };
-            state.edges[edgeConnectionIdx] = updatedConnection;
-            const connectedNodeIdx = get().nodes.findIndex(
-              (nd) => nd.id === edgeConnection?.target
-            );
-            if (connectedNodeIdx >= 0 && edgeConnection?.targetHandle) {
-              state.nodes[connectedNodeIdx].data[edgeConnection.targetHandle] =
-                status;
-            }
-          }
+            state.edges[edgeIdx] = updatedConnection;
+            state.nodes[connectedNodeIdx].data[connectedEdge.targetHandle] =
+              status;
+          });
         });
       },
       addNode: (node) => {
