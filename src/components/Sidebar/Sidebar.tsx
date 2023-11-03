@@ -5,6 +5,7 @@ import {
   OnIcon,
   OrGateIcon,
   SevenSegmentDisplayIcon,
+  XORGateIcon,
 } from "../../assets/Icons";
 import { NodeType } from "../../utils/types";
 import styles from "./Sidebar.module.css";
@@ -30,6 +31,12 @@ const SideBar = () => {
         draggable
       >
         <OrGateIcon />
+      </div>
+      <div
+        onDragStart={(event) => onDragStart(event, NodeType.XOR_GATE)}
+        draggable
+      >
+        <XORGateIcon />
       </div>
       <div
         onDragStart={(event) => onDragStart(event, NodeType.LIGHTBULB)}
