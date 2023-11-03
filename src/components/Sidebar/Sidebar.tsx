@@ -3,6 +3,7 @@ import {
   LightBulbIcon,
   NotIcon,
   OnIcon,
+  OrGateIcon,
   SevenSegmentDisplayIcon,
 } from "../../assets/Icons";
 import { NodeType } from "../../utils/types";
@@ -23,6 +24,12 @@ const SideBar = () => {
         draggable
       >
         <AndGateIcon />
+      </div>
+      <div
+        onDragStart={(event) => onDragStart(event, NodeType.OR_GATE)}
+        draggable
+      >
+        <OrGateIcon />
       </div>
       <div
         onDragStart={(event) => onDragStart(event, NodeType.LIGHTBULB)}

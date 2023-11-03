@@ -14,6 +14,7 @@ import On from "./components/On/On";
 import Switch from "./components/Switch/Switch";
 import Not from "./components/Not/Not";
 import SevenSegmentDisplay from "./components/SevenSegmentDisplay/SevenSegmentDisplay";
+import OrGate from "./components/OrGate/OrGate";
 
 import "reactflow/dist/style.css";
 import { useShallow } from "zustand/react/shallow";
@@ -21,7 +22,15 @@ import SideBar from "./components/Sidebar/Sidebar";
 import { useCallback, useRef, useState } from "react";
 import { NodeType, initNodeData } from "./utils/types";
 
-const nodeTypes = { AndGate, LightBulb, On, Switch, Not, SevenSegmentDisplay };
+const nodeTypes = {
+  AndGate,
+  LightBulb,
+  On,
+  Switch,
+  Not,
+  SevenSegmentDisplay,
+  OrGate,
+};
 const selector = (state: RFState) => ({
   nodes: state.nodes,
   edges: state.edges,

@@ -5,11 +5,13 @@ export enum NodeType {
   NOT = "Not",
   SWITCH = "Switch",
   SEVEN_SEGMENT_DISPLAY = "SevenSegmentDisplay",
+  OR_GATE = "OrGate",
 }
 
 export const initNodeData = (type: NodeType) => {
   switch (type) {
     case NodeType.AND_GATE:
+    case NodeType.OR_GATE:
       return { a: false, b: false, out: false };
     case NodeType.ON:
       return { out: true };
