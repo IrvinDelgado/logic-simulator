@@ -64,6 +64,12 @@ const SideBar = () => {
       >
         <SevenSegmentDisplayIcon />
       </div>
+      <div
+        onDragStart={(event) => onDragStart(event, NodeType.JKFlipFlop)}
+        draggable
+      >
+        JK
+      </div>
     </aside>
   );
 };

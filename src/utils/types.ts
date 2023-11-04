@@ -7,6 +7,7 @@ export enum NodeType {
   SEVEN_SEGMENT_DISPLAY = "SevenSegmentDisplay",
   OR_GATE = "OrGate",
   XOR_GATE = "XORGate",
+  JKFlipFlop = "JKFlipFlop",
 }
 
 export const initNodeData = (type: NodeType) => {
@@ -25,5 +26,7 @@ export const initNodeData = (type: NodeType) => {
       return { out: false };
     case NodeType.SEVEN_SEGMENT_DISPLAY:
       return { a: false, b: false, c: false, d: false };
+    case NodeType.JKFlipFlop:
+      return { j: false, k: false, clk: false, q: false, qNot: false };
   }
 };

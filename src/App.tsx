@@ -16,6 +16,7 @@ import Not from "./components/Not/Not";
 import SevenSegmentDisplay from "./components/SevenSegmentDisplay/SevenSegmentDisplay";
 import OrGate from "./components/OrGate/OrGate";
 import XORGate from "./components/XORGate/XORGate";
+import JKFlipFlop from "./components/JKFlipFlop/JKFlipFlop";
 
 import "reactflow/dist/style.css";
 import { useShallow } from "zustand/react/shallow";
@@ -32,6 +33,7 @@ const nodeTypes = {
   SevenSegmentDisplay,
   OrGate,
   XORGate,
+  JKFlipFlop,
 };
 const selector = (state: RFState) => ({
   nodes: state.nodes,
