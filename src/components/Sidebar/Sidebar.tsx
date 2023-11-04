@@ -70,6 +70,12 @@ const SideBar = () => {
       >
         JK
       </div>
+      <div
+        onDragStart={(event) => onDragStart(event, NodeType.Clock)}
+        draggable
+      >
+        CLK
+      </div>
     </aside>
   );
 };

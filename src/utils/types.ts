@@ -8,6 +8,7 @@ export enum NodeType {
   OR_GATE = "OrGate",
   XOR_GATE = "XORGate",
   JKFlipFlop = "JKFlipFlop",
+  Clock = "Clock",
 }
 
 export const initNodeData = (type: NodeType) => {
@@ -16,6 +17,7 @@ export const initNodeData = (type: NodeType) => {
     case NodeType.OR_GATE:
     case NodeType.XOR_GATE:
       return { a: false, b: false, out: false };
+    case NodeType.Clock:
     case NodeType.ON:
       return { out: true };
     case NodeType.LIGHTBULB:
