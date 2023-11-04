@@ -36,10 +36,17 @@ function JKFlipFlop({ id, data, isConnectable }: JKFlipFlopType) {
         qNot: false,
       });
     }
-    if (data.j && data.k && data.clk && !data.hasSet) {
+    if (data.j && data.k && data.clk && !data.hasSet && (data.q || data.qNot)) {
       toggleOut(id, true, {
         q: data.qNot,
         qNot: data.q,
+        hasSet: true,
+      });
+    }
+    if (data.j && data.k && data.clk && !data.hasSet && !data.q && !data.qNot) {
+      toggleOut(id, true, {
+        q: true,
+        qNot: false,
         hasSet: true,
       });
     }
