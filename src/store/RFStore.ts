@@ -23,7 +23,11 @@ export type RFState = {
   onEdgesChange: OnEdgesChange;
   onEdgesDeleted: (edgesDeleted: Edge[]) => void;
   onConnect: (connection: Connection) => void;
-  toggleOut: (id: string, status: boolean) => void;
+  toggleOut: (
+    id: string,
+    status: boolean,
+    nodeData?: { [key: string]: boolean }
+  ) => void;
   addNode: (node: Node) => void;
 };
 const useStore = create<RFState>()(
@@ -81,7 +85,11 @@ const useStore = create<RFState>()(
           }
         });
       },
-      toggleOut: (id, status) => {
+      toggleOut: (
+        id: string,
+        status: boolean,
+        nodeData: { [key: string]: boolean } | undefined
+      ) => {
         set((state) => {
           // Update Current Node Out to new Status
           const nodeTargetIdx = get().nodes.findIndex((nd) => nd.id === id);
@@ -89,6 +97,7 @@ const useStore = create<RFState>()(
             const nodeTarget = get().nodes[nodeTargetIdx];
             state.nodes[nodeTargetIdx].data = {
               ...nodeTarget.data,
+              ...nodeData,
               out: status,
             };
           }
@@ -107,19 +116,23 @@ const useStore = create<RFState>()(
           if (connectedEdgesIdx.length < 0) return;
           connectedEdgesIdx.forEach((edgeIdx) => {
             const connectedEdge = get().edges[edgeIdx];
-            if (!connectedEdge.targetHandle) return;
+            if (!connectedEdge.targetHandle || !connectedEdge.sourceHandle)
+              return;
             // For an edge to exist a Source and Target Node MUST exist
             const connectedNodeIdx = get().nodes.findIndex(
               (nd) => nd.id === connectedEdge.target
             );
+            const output = nodeData
+              ? nodeData[connectedEdge.sourceHandle]
+              : status;
             const updatedConnection = {
               ...connectedEdge,
-              animated: status,
-              style: { stroke: status ? "yellow" : "gray" },
+              animated: output,
+              style: { stroke: output ? "yellow" : "gray" },
             };
             state.edges[edgeIdx] = updatedConnection;
             state.nodes[connectedNodeIdx].data[connectedEdge.targetHandle] =
-              status;
+              output;
           });
         });
       },
