@@ -1,18 +1,23 @@
 export const AndGateIcon = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="50">
-      <path
-        fill="none"
-        stroke="white"
-        strokeWidth="2"
-        d="M70 25h25M31 15H5M32 35H5"
-      />
-      <path
-        fill="white"
-        stroke="white"
-        strokeWidth="2"
-        d="M30 5V45H50.47619c11.267908 0 20-9.000045 20-20s-8.732091-20-20-20H30zm2.857143 2.857143H50.47619c9.760663 0 16.666667 7.639955 16.666667 17.142857 0 9.502902-7.382195 17.142857-17.142857 17.142857H32.857143V7.857143z"
-      />
+    <svg
+      width="67.870274"
+      height="29.970953"
+      viewBox="0 0 62.870274 29.970953"
+      fill="none"
+      stroke="#ffffff"
+      strokeWidth={2}
+      strokeLinejoin="miter"
+    >
+      <g transform="translate(-18.680836,-29.969202)">
+        <path d="M 100.01816,0.04417539 99.9849,100.02656 0.00589067,100.01845" />
+        <g>
+          <path d="m 69.763651,45.057979 10.78746,0.07817" />
+          <path d="m 29.905376,30.994482 0.0783,27.979389 H 50.17176 c 2.645938,0 6.950624,-0.254273 9.425066,-1.175847 4.197175,-1.563185 9.728747,-5.094449 9.734616,-12.850279 0.0058,-7.705322 -5.426946,-11.240921 -9.594729,-12.819488 -2.504053,-0.948422 -6.871141,-1.200332 -9.554618,-1.192553 z" />
+          <path d="M 29.796825,38.928661 19.712894,38.850491" />
+          <path d="M 29.686597,51.045011 H 19.680836" />
+        </g>
+      </g>
     </svg>
   );
 };
@@ -61,25 +66,28 @@ export const LightBulbIcon = () => {
 
 export const NotIcon = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="50">
-      <path
-        fill="green"
-        stroke="white"
-        strokeWidth="2"
-        d="M79.15691 25H95M29.043478 25h-24"
-      />
-      <path
-        stroke="white"
-        d="M28.96875 2.59375v44.8125l2.15625-1.0625 41.03125-20v-2.6875l-41.03125-20-2.15625-1.0625zm3 4.8125L68.09375 25l-36.125 17.59375V7.40625z"
-        style={{ marker: "stroke", fill: "white", stroke: "white" }}
-      />
-      <path
-        fill="none"
-        stroke="white"
-        strokeWidth="3"
-        d="M79 25a4 4 0 1 1-8 0 4 4 0 1 1 8 0z"
-        style={{ marker: "none" }}
-      />
+    <svg width="55.969574" height="29.239716" viewBox="0 0 55.969574 29.239716">
+      <g transform="translate(-224.80487,-30.221657)">
+        <path
+          fill="none"
+          stroke="#ffffff"
+          strokeWidth={2}
+          strokeLinejoin="miter"
+          d="m 299.07189,0.16304755 -0.0333,99.98238245 -99.97901,-0.008"
+        />
+        <g
+          fill="none"
+          stroke="#ffffff"
+          strokeWidth={2}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+        >
+          <path d="M 235.896,30.706721 V 58.976309 L 264.93071,44.906057 Z" />
+          <ellipse cx="267.9256" cy="44.924587" rx="2.4569695" ry="2.5067728" />
+          <path d="M 235.89354,44.886982 225.30487,44.82162" />
+          <path d="m 270.40476,44.886982 h 9.86968" />
+        </g>
+      </g>
     </svg>
   );
 };
@@ -116,31 +124,27 @@ export const SevenSegmentDisplayIcon = () => {
 
 export const OrGateIcon = () => {
   return (
-    <svg
-      viewBox="0 0 512 512"
-      height="50"
-      width="100"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="transparent"
-    >
-      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-      <g
-        id="SVGRepo_tracerCarrier"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        stroke="white"
-        strokeWidth="20"
-      >
+    <svg width="63.272781" height="30.933304" viewBox="0 0 63.272781 30.933304">
+      <g transform="translate(-22.015692,-139.97865)">
         <path
-          fill="transparent"
-          d="M116.6 407c40-45.9 60.4-98.4 60.4-151 0-52.6-20.4-105.1-60.4-151H192c34.1 0 81.9 34 119.3 71.4 18.7 18.6 35.1 37.9 46.6 53.3 5.8 7.6 10.4 14.4 13.4 19.4 1.4 2.5 2.5 4.7 3.2 6.1.1.4.2.5.2.8 0 .3-.1.5-.2.9-.6 1.4-1.7 3.5-3.2 6-3 5.1-7.5 11.8-13.2 19.5-11.3 15.4-27.5 34.6-46.1 53.2C274.8 373 227.1 407 192 407zM16 361v-18h122.2c-3 6.1-6.3 12.1-9.9 18zm374.5-96c.2-.3.4-.7.5-1 1.1-2.4 2-4.4 2-8 0-3.6-1-5.6-2-8-.1-.3-.3-.7-.5-1H496v18zM16 169v-18h112.3c3.6 5.9 6.9 11.9 9.9 18z"
-        ></path>
-      </g>
-      <g id="SVGRepo_iconCarrier">
-        <path
-          fill="transparent"
-          d="M116.6 407c40-45.9 60.4-98.4 60.4-151 0-52.6-20.4-105.1-60.4-151H192c34.1 0 81.9 34 119.3 71.4 18.7 18.6 35.1 37.9 46.6 53.3 5.8 7.6 10.4 14.4 13.4 19.4 1.4 2.5 2.5 4.7 3.2 6.1.1.4.2.5.2.8 0 .3-.1.5-.2.9-.6 1.4-1.7 3.5-3.2 6-3 5.1-7.5 11.8-13.2 19.5-11.3 15.4-27.5 34.6-46.1 53.2C274.8 373 227.1 407 192 407zM16 361v-18h122.2c-3 6.1-6.3 12.1-9.9 18zm374.5-96c.2-.3.4-.7.5-1 1.1-2.4 2-4.4 2-8 0-3.6-1-5.6-2-8-.1-.3-.3-.7-.5-1H496v18zM16 169v-18h112.3c3.6 5.9 6.9 11.9 9.9 18z"
-        ></path>
+          fill="none"
+          stroke="#ffffff"
+          strokeWidth={2}
+          strokeLinejoin="miter"
+          d="m 100.07824,100.11508 -0.0333,99.98238 -99.97901192,-0.008"
+        />
+        <g
+          fill="none"
+          stroke="#ffffff"
+          strokeWidth={2}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+        >
+          <path d="m 30.226657,140.47866 c 0,0 4.949392,8.98572 4.943549,14.96923 -0.0058,5.98351 -4.985709,14.87977 -4.985709,14.87977 l 22.495969,0.0843 c 13.596823,-0.98398 20.587116,-14.19786 20.5076,-15.77174 -0.07952,-1.57388 -7.45006,-12.9514 -20.420714,-14.11429 z" />
+          <path d="M 33.842769,150.45411 H 22.571718" />
+          <path d="M 33.786742,160.62584 H 22.515691" />
+          <path d="M 84.788474,154.55749 H 73.517423" />
+        </g>
       </g>
     </svg>
   );
@@ -148,26 +152,211 @@ export const OrGateIcon = () => {
 
 export const XORGateIcon = () => {
   return (
-    <svg
-      viewBox="0 0 512 512"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="transparent"
-      height="50"
-      width="100"
-      stroke="white"
-      strokeWidth="20"
-    >
-      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-      <g
-        id="SVGRepo_tracerCarrier"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      ></g>
-      <g id="SVGRepo_iconCarrier">
+    <svg width="65.631485" height="31.056137" viewBox="0 0 65.631485 31.056137">
+      <g transform="translate(-18.743935,-234.85429)">
+        <g
+          transform="translate(-0.70403725,100.32531)"
+          fill="none"
+          stroke="#ffffff"
+          strokeWidth={2}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+        >
+          <path d="m 30.017641,135.07938 c 0,0 4.949392,8.98572 4.943549,14.96923 -0.0058,5.98351 -4.985709,14.87977 -4.985709,14.87977 l 22.495969,0.0843 c 13.596823,-0.98398 20.587116,-14.19786 20.5076,-15.77174 -0.07952,-1.57388 -7.45006,-12.9514 -20.420714,-14.11429 z" />
+          <path d="m 26.970014,165.08511 c 0,0 5.55009,-9.6922 5.546073,-14.89389 -0.004,-5.2017 -5.546073,-15.16224 -5.546073,-15.16224" />
+          <path d="M 31.219022,144.95824 H 19.947971" />
+          <path d="M 31.352494,155.03338 H 20.081443" />
+          <path d="M 84.579458,149.15821 H 73.308407" />
+        </g>
         <path
-          fill="transparent"
-          d="M53.86 89.17L42.14 102.8c17.99 15.4 32.89 31.6 44.81 48.2H16v18h82.58C114.9 197.3 123 226.7 123 256c0 29.3-8.1 58.7-24.42 87H16v18h70.95c-11.92 16.6-26.82 32.8-44.81 48.2l11.72 13.6c22.59-19.4 40.85-40.1 54.74-61.8h19.7c3.6-5.9 6.9-11.9 9.9-18H119c14.6-28.2 22-57.5 22-87s-7.4-58.8-22-87h19.2c-3-6.1-6.3-12.1-9.9-18h-19.7c-13.88-21.7-32.15-42.5-54.74-61.83zM116.6 105c40 45.9 60.4 98.4 60.4 151 0 52.6-20.4 105.1-60.4 151H192c34.1 0 81.9-34 119.3-71.4 18.7-18.6 35.1-37.9 46.6-53.3 5.8-7.6 10.4-14.4 13.4-19.4 1.4-2.5 2.5-4.7 3.2-6.1.1-.4.2-.5.2-.8 0-.3-.1-.5-.2-.9-.6-1.4-1.7-3.5-3.2-6-3-5.1-7.5-11.8-13.2-19.5-11.3-15.4-27.5-34.6-46.1-53.2C274.8 139 227.1 105 192 105h-75.4zm273.9 142c.2.3.4.7.5 1 1.1 2.4 2 4.4 2 8 0 3.6-1 5.6-2 8-.1.3-.3.7-.5 1H496v-18H390.5z"
-        ></path>
+          fill="none"
+          stroke="#ffffff"
+          strokeWidth={2}
+          strokeLinejoin="miter"
+          d="m 100.14919,199.87921 -0.0333,99.98238 -99.97900909,-0.008"
+        />
+      </g>
+    </svg>
+  );
+};
+
+export const ClockIcon = ({ textColor }: { textColor?: string }) => {
+  return (
+    <svg width="50" height="31.013977" viewBox="0 0 40.611496 31.013977">
+      <g transform="translate(-229.93349,-139.45392)">
+        <path
+          fill="none"
+          stroke="#ffffff"
+          strokeWidth={2}
+          strokeLinejoin="miter"
+          d="m 299.01135,100.36093 -0.0333,99.98238 -99.97901,-0.008"
+        />
+        <g>
+          <rect
+            fill="none"
+            stroke="#ffffff"
+            strokeWidth={2}
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            width="37.013971"
+            height="30.013971"
+            x="230.43349"
+            y="139.95392"
+          />
+          <path
+            fill="none"
+            stroke="#ffffff"
+            strokeWidth={2}
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            d="m 267.46934,154.89645 9.57564,0.0602"
+          />
+          <text
+            fillOpacity={1}
+            stroke={textColor || "white"}
+            fill="white"
+            strokeWidth={1}
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            x="233.12759"
+            y="158.87125"
+          >
+            <tspan x="233.12759" y="158.87125">
+              CLK
+            </tspan>
+          </text>
+        </g>
+      </g>
+    </svg>
+  );
+};
+
+export const JKIcon = () => {
+  return (
+    <svg width="72.420288" height="75.224731" viewBox="0 0 72.420288 75.224731">
+      <g transform="translate(-214.45581,-214.45581)">
+        <rect
+          fill="none"
+          fillOpacity={1}
+          stroke="#ffffff"
+          strokeWidth={2}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          width="51.069695"
+          height="74.224716"
+          x="225.11829"
+          y="214.95581"
+        />
+        <path
+          fill="none"
+          fillOpacity={1}
+          stroke="#ffffff"
+          strokeWidth={2}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          d="M 224.98965,229.87794 H 214.95581"
+        />
+        <path
+          fill="none"
+          fillOpacity={1}
+          stroke="#ffffff"
+          strokeWidth={2}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          d="M 225.0484,274.88119 H 215.01456"
+        />
+        <path
+          fill="none"
+          fillOpacity={1}
+          stroke="#ffffff"
+          strokeWidth={2}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          d="M 286.24745,230.03148 H 276.21361"
+        />
+        <path
+          fill="none"
+          fillOpacity={1}
+          stroke="#ffffff"
+          strokeWidth={2}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          d="M 286.37609,274.82769 H 276.34225"
+        />
+        <text
+          fill="#ffffff"
+          fillOpacity={1}
+          stroke="#ffffff"
+          strokeWidth={1}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          x="229.95738"
+          y="234.24092"
+        >
+          <tspan x="229.95738" y="234.24092">
+            J
+          </tspan>
+        </text>
+        <text
+          fill="#ffffff"
+          fillOpacity={1}
+          stroke="#ffffff"
+          strokeWidth={1}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          x="230.11098"
+          y="279.23169"
+        >
+          <tspan x="230.11098" y="279.23169">
+            K
+          </tspan>
+        </text>
+        <text
+          fill="#ffffff"
+          fillOpacity={1}
+          stroke="#ffffff"
+          strokeWidth={1}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          x="263.20883"
+          y="234.09814"
+        >
+          <tspan x="257.20883" y="234.09814">
+            Q
+          </tspan>
+        </text>
+        <text
+          fill="#ffffff"
+          fillOpacity={1}
+          stroke="#ffffff"
+          strokeWidth={1}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          x="261.94122"
+          y="279.21118"
+        >
+          <tspan x="257.94122" y="279.21118">
+            Q'
+          </tspan>
+        </text>
+        <path
+          fill="none"
+          fillOpacity={1}
+          stroke="#ffffff"
+          strokeWidth={2}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          d="M 224.85389,252.60709 H 214.82005"
+        />
+        <path
+          fill="none"
+          fillOpacity={1}
+          stroke="#ffffff"
+          strokeWidth={2}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          d="m 225.3875,257.75667 9.58298,-5.25289 -9.79593,-5.11092"
+        />
       </g>
     </svg>
   );

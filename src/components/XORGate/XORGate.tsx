@@ -35,7 +35,7 @@ function XORGate({
       <Handle
         type="target"
         position={Position.Left}
-        style={{ top: 15, left: 20 }}
+        style={{ top: 11, left: -2 }}
         id="a"
         isConnectable={isConnectable}
       />
@@ -43,14 +43,14 @@ function XORGate({
         type="target"
         position={Position.Left}
         id="b"
-        style={{ top: 35, left: 20 }}
+        style={{ top: 20, left: -2 }}
         isConnectable={isConnectable}
       />
       <XORGateIcon />
       <Handle
         type="source"
         position={Position.Right}
-        style={{ top: 25, right: 20 }}
+        style={{ top: 15, right: -2 }}
         id="out"
         isConnectable={isConnectable}
       />

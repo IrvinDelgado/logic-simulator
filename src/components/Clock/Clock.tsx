@@ -2,12 +2,13 @@ import { useEffect } from "react";
 import useStore, { RFState } from "../../store/RFStore";
 import { useShallow } from "zustand/react/shallow";
 import { Handle, Position } from "reactflow";
+import { ClockIcon } from "../../assets/Icons";
 
 const selector = (state: RFState) => ({
   toggleOut: state.toggleOut,
 });
 
-const SECOND = 1000;
+const SECOND = 500;
 
 type ClockData = {
   out: boolean;
@@ -31,14 +32,11 @@ function Clock({ id, isConnectable, data }: ClockType) {
 
   return (
     <div>
-      <div
-        style={{ height: 50, width: 50, color: data.out ? "yellow" : "gray" }}
-      >
-        CLK
-      </div>
+      <ClockIcon textColor={data.out ? "yellow" : "gray"} />
       <Handle
         type="source"
-        position={Position.Bottom}
+        style={{ top: 16 }}
+        position={Position.Right}
         id="out"
         isConnectable={isConnectable}
       />

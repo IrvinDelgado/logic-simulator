@@ -2,6 +2,7 @@ import { Handle, Position } from "reactflow";
 import useStore, { RFState } from "../../store/RFStore";
 import { useShallow } from "zustand/react/shallow";
 import { useEffect } from "react";
+import { JKIcon } from "../../assets/Icons";
 
 const selector = (state: RFState) => ({
   toggleOut: state.toggleOut,
@@ -71,17 +72,17 @@ function JKFlipFlop({ id, data, isConnectable }: JKFlipFlopType) {
         type="target"
         position={Position.Left}
         id="k"
-        style={{ top: 35 }}
+        style={{ top: 61 }}
         isConnectable={isConnectable}
       />
       <Handle
         type="target"
         position={Position.Left}
         id="clk"
-        style={{ top: 25 }}
+        style={{ top: 38 }}
         isConnectable={isConnectable}
       />
-      <div style={{ height: 100, width: 100 }}>JKFlipFlop</div>
+      <JKIcon />
       <Handle
         type="source"
         position={Position.Right}
@@ -92,7 +93,7 @@ function JKFlipFlop({ id, data, isConnectable }: JKFlipFlopType) {
       <Handle
         type="source"
         position={Position.Right}
-        style={{ top: 25 }}
+        style={{ top: 61 }}
         id="qNot"
         isConnectable={isConnectable}
       />

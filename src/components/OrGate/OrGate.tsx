@@ -32,7 +32,7 @@ function OrGate({
       <Handle
         type="target"
         position={Position.Left}
-        style={{ top: 15, left: 20 }}
+        style={{ top: 10, left: -4 }}
         id="a"
         isConnectable={isConnectable}
       />
@@ -40,14 +40,14 @@ function OrGate({
         type="target"
         position={Position.Left}
         id="b"
-        style={{ top: 35, left: 20 }}
+        style={{ top: 20, left: -4 }}
         isConnectable={isConnectable}
       />
       <OrGateIcon />
       <Handle
         type="source"
         position={Position.Right}
-        style={{ top: 25, right: 20 }}
+        style={{ top: 15, right: -4 }}
         id="out"
         isConnectable={isConnectable}
       />

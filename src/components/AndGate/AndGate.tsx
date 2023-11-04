@@ -33,7 +33,7 @@ function AndGate({
       <Handle
         type="target"
         position={Position.Left}
-        style={{ top: 15 }}
+        style={{ top: 9 }}
         id="a"
         isConnectable={isConnectable}
       />
@@ -41,14 +41,14 @@ function AndGate({
         type="target"
         position={Position.Left}
         id="b"
-        style={{ top: 35 }}
+        style={{ top: 22 }}
         isConnectable={isConnectable}
       />
       <AndGateIcon />
       <Handle
         type="source"
         position={Position.Right}
-        style={{ top: 25 }}
+        style={{ top: 15 }}
         id="out"
         isConnectable={isConnectable}
       />

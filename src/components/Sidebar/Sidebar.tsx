@@ -1,5 +1,7 @@
 import {
   AndGateIcon,
+  ClockIcon,
+  JKIcon,
   LightBulbIcon,
   NotIcon,
   OnIcon,
@@ -38,14 +40,26 @@ const SideBar = () => {
       >
         <XORGateIcon />
       </div>
+      <div onDragStart={(event) => onDragStart(event, NodeType.NOT)} draggable>
+        <NotIcon />
+      </div>
       <div
         onDragStart={(event) => onDragStart(event, NodeType.LIGHTBULB)}
         draggable
       >
         <LightBulbIcon />
       </div>
-      <div onDragStart={(event) => onDragStart(event, NodeType.NOT)} draggable>
-        <NotIcon />
+      <div
+        onDragStart={(event) => onDragStart(event, NodeType.JKFlipFlop)}
+        draggable
+      >
+        <JKIcon />
+      </div>
+      <div
+        onDragStart={(event) => onDragStart(event, NodeType.Clock)}
+        draggable
+      >
+        <ClockIcon />
       </div>
       <div
         onDragStart={(event) => onDragStart(event, NodeType.SWITCH)}
@@ -63,18 +77,6 @@ const SideBar = () => {
         draggable
       >
         <SevenSegmentDisplayIcon />
-      </div>
-      <div
-        onDragStart={(event) => onDragStart(event, NodeType.JKFlipFlop)}
-        draggable
-      >
-        JK
-      </div>
-      <div
-        onDragStart={(event) => onDragStart(event, NodeType.Clock)}
-        draggable
-      >
-        CLK
       </div>
     </aside>
   );

@@ -1,4 +1,5 @@
 .sideBar {
+  padding-top: 1rem;
   min-width: 10rem;
   display: flex;
   flex-direction: column;

@@ -29,6 +29,7 @@ function Not({
       <Handle
         type="target"
         position={Position.Left}
+        style={{ top: 15, left: -7 }}
         id="in"
         isConnectable={isConnectable}
       />
@@ -36,6 +37,7 @@ function Not({
       <Handle
         type="source"
         position={Position.Right}
+        style={{ top: 15, right: -7 }}
         id="out"
         isConnectable={isConnectable}
       />
